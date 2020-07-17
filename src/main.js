@@ -9,7 +9,7 @@ const app = new PIXI.Application({
   height: 500,
 });
 
-counterOfShapes.innerHTML = app.stage.children.length;
+counterOfShapes.innerHTML = app.stage.children.length - 1;
 
 document.querySelector('.app').appendChild(app.view);
 
@@ -27,11 +27,9 @@ const makeShape = (x, y) => {
   shapeGenerate(shapeAuto, colorAuto, x, y);
 
   const deleteShape = () => {
-    counterOfShapes.innerHTML = app.stage.children.length;
-
-    ;
     app.stage.removeChild(shapeAuto);
     shapeAuto.destroy();
+    counterOfShapes.innerHTML = app.stage.children.length;
     clearInterval(intervalAuto);
   };
 
