@@ -6,10 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FE Template</title>
     <link rel="stylesheet" href="style.scss">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="buttons.js"></script>
     <script defer src="main.js"></script>
   </head>
 
   <body>
+    <div class="titles">
+      <p class="number-of-shapes-title">Number of shapes: <span class="number-of-shapes"></span></p>
+      <p class="surface-title">Surface area occupied by shapes: <span class="surface"></span></p>
+    </div>
+
+    <div class="app"></div>
+
+    <div class="buttons">
+      <div class="number-input shapes">
+        <p>Number of shapes per second</p>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button type="button" value="-" class="qtyminusS btn btn-danger btn-number" field="quantityS">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </span>
+          <input type="text" name="quantityS" value="42" class="qtyS form-control input-number"></input>
+          <span class="input-group-btn">
+            <button type="button" value="+" class="qtyplusS btn btn-success btn-number" field="quantityS">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <div class="number-input gravity">
+        <p>Gravity</p>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button type="button" value="-" class="qtyminus btn btn-danger btn-number" field="quantity">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </span>
+          <input type="text" name="quantity" value="9.8" class="qty form-control input-number"></input>
+          <span class="input-group-btn">
+            <button type="button" value="+" class="qtyplus btn btn-success btn-number" field="quantity">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+
   </body>
 
 </html>
