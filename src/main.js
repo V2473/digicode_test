@@ -4,14 +4,12 @@ const counterOfShapes = document.querySelector('.number-of-shapes');
 const shapesButton = document.querySelector('.qtyS');
 const gravity = document.querySelector('.qty');
 
-let numberOfShapes = 0;
-
-counterOfShapes.innerHTML = numberOfShapes;
-
 const app = new PIXI.Application({
   width: 800,
   height: 500,
 });
+
+counterOfShapes.innerHTML = app.stage.children.length;
 
 document.querySelector('.app').appendChild(app.view);
 
@@ -29,8 +27,9 @@ const makeShape = (x, y) => {
   shapeGenerate(shapeAuto, colorAuto, x, y);
 
   const deleteShape = () => {
-    numberOfShapes--;
-    counterOfShapes.innerHTML = numberOfShapes;
+    counterOfShapes.innerHTML = app.stage.children.length;
+
+    ;
     app.stage.removeChild(shapeAuto);
     shapeAuto.destroy();
     clearInterval(intervalAuto);
@@ -41,8 +40,7 @@ const makeShape = (x, y) => {
   });
 
   app.stage.addChild(shapeAuto);
-  numberOfShapes++;
-  counterOfShapes.innerHTML = numberOfShapes;
+  counterOfShapes.innerHTML = app.stage.children.length;
 
   const gravityAuto = (element) => {
     let speed = 0;
@@ -104,15 +102,12 @@ const shapeGenerate = (el, color, x, y) => {
       break;
     case (random <= 1):
       shapeGenerate(el, color, x + 10, y + 10);
-      // numberOfShapes--;
       el.endFill();
       el.beginFill(color);
       shapeGenerate(el, color, x - 15, y + 10);
-      // numberOfShapes--;
       el.endFill();
       el.beginFill(color);
       shapeGenerate(el, color, x + 15, y - 15);
-      // numberOfShapes--;
 
       break;
   };
@@ -137,7 +132,6 @@ app.renderer.view.addEventListener('click', (e) => {
   if (e.target.style.cursor !== 'inherit') {
     return;
   };
-
   makeShape(e.pageX - 25, e.pageY - 50);
 });
 
