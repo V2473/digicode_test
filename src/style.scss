@@ -34,17 +34,17 @@ body {
   margin: 10px 30px 0;
   color: blue;
   font-size: 20px;
-  width: 250px;
+  width: 300px;
 }
 
 .surface-title {
   @extend .number-of-shapes-title;
   color: red;
-  width: 400px;
+  width: 800px;
 }
 
 .titles {
   @extend .buttons;
-  width: 800px;
+  width: 11000px;
   // justify-content: space-between;
 }

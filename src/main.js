@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js';
 
 const counterOfShapes = document.querySelector('.number-of-shapes');
+const surface = document.querySelector('.surface');
+let surfaceSum = 0;
 const shapesButton = document.querySelector('.qtyS');
 const gravity = document.querySelector('.qty');
 
@@ -28,6 +30,8 @@ const makeShape = (x, y) => {
 
   const deleteShape = () => {
     app.stage.removeChild(shapeAuto);
+    surfaceSum -= shapeAuto.height * shapeAuto.width * 0.6;
+    surface.innerHTML = surfaceSum.toFixed(0);
     shapeAuto.destroy();
     counterOfShapes.innerHTML = app.stage.children.length;
     clearInterval(intervalAuto);
@@ -66,6 +70,8 @@ const shapeGenerate = (el, color, x, y) => {
       el.drawCircle(0, 0, Math.random() * 20 + 5);
       el.x = x;
       el.y = y;
+      surfaceSum += el.height * el.width * 0.6;
+      surface.innerHTML = surfaceSum.toFixed(0);
 
       return;
     case (random < 0.285):
@@ -99,13 +105,19 @@ const shapeGenerate = (el, color, x, y) => {
       );
       break;
     case (random <= 1):
-      shapeGenerate(el, color, x + 10, y + 10);
+      shapeGenerate(el, color, x, y);
       el.endFill();
+      surfaceSum -= el.height * el.width * 0.6;
+      surface.innerHTML = surfaceSum.toFixed(0);
       el.beginFill(color);
-      shapeGenerate(el, color, x - 15, y + 10);
+      shapeGenerate(el, color, x, y);
       el.endFill();
+      surfaceSum -= el.height * el.width * 0.6;
+      surface.innerHTML = surfaceSum.toFixed(0);
       el.beginFill(color);
-      shapeGenerate(el, color, x + 15, y - 15);
+      shapeGenerate(el, color, x, y);
+      surfaceSum -= el.height * el.width * 0.6;
+      surface.innerHTML = surfaceSum.toFixed(0);
 
       break;
   };
@@ -122,6 +134,8 @@ const shapeGenerate = (el, color, x, y) => {
     0,
   );
   el.endFill();
+  surfaceSum += el.height * el.width * 0.6;
+  surface.innerHTML = surfaceSum.toFixed(0);
   el.interactive = true;
   el.buttonMode = true;
 };
@@ -130,10 +144,15 @@ app.renderer.view.addEventListener('click', (e) => {
   if (e.target.style.cursor !== 'inherit') {
     return;
   };
-  makeShape(e.pageX - 25, e.pageY - 50);
+
+  makeShape(e.pageX - 25, e.pageY - 75);
+
+  // new Shape(e.pageX - 25, e.pageY - 50);
+
+  // newShape();
 });
 
-let t = 1;
+let t = 0;
 let interval;
 
 f1();
