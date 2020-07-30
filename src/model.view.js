@@ -1,94 +1,5 @@
 /* eslint-disable max-len */
-/* eslint-disable no-undef */
 import * as PIXI from 'pixi.js';
-
-// CONTROLLER
-
-jQuery(document).ready(function() {
-  // This button will increment the value
-  $('.qtyplus').click(function(e) {
-    // Stop acting like a button
-    e.preventDefault();
-    // Get the field name
-    fieldName = $(this).attr('field');
-
-    // Get its current value
-    const currentVal = parseInt($('input[name=' + fieldName + ']').val());
-
-    // If is not undefined
-    if (!isNaN(currentVal)) {
-      // Increment
-      $('input[name=' + fieldName + ']').val(currentVal + 1);
-    } else {
-      // Otherwise put a 0 there
-      $('input[name=' + fieldName + ']').val(0);
-    }
-  });
-
-  // This button will decrement the value till 0
-  $('.qtyminus').click(function(e) {
-    // Stop acting like a button
-    e.preventDefault();
-    // Get the field name
-    fieldName = $(this).attr('field');
-
-    // Get its current value
-    const currentVal = parseInt($('input[name=' + fieldName + ']').val());
-
-    // If it isn't undefined or its greater than 0
-    if (!isNaN(currentVal) && currentVal > 0) {
-      // Decrement one
-      $('input[name=' + fieldName + ']').val(currentVal - 1);
-    } else {
-      // Otherwise put a 0 there
-      $('input[name=' + fieldName + ']').val(0);
-    }
-  });
-});
-
-jQuery(document).ready(function() {
-// This button will increment the value
-  $('.qtyplusS').click(function(e) {
-    // Stop acting like a button
-    e.preventDefault();
-    // Get the field name
-    fieldName = $(this).attr('field');
-
-    // Get its current value
-    const currentVal = parseInt($('input[name=' + fieldName + ']').val());
-
-    // If is not undefined
-    if (!isNaN(currentVal)) {
-      // Increment
-      $('input[name=' + fieldName + ']').val(currentVal + 1);
-    } else {
-      // Otherwise put a 0 there
-      $('input[name=' + fieldName + ']').val(0);
-    }
-  });
-
-  // This button will decrement the value till 0
-  $('.qtyminusS').click(function(e) {
-    // Stop acting like a button
-    e.preventDefault();
-    // Get the field name
-    fieldName = $(this).attr('field');
-
-    // Get its current value
-    const currentVal = parseInt($('input[name=' + fieldName + ']').val());
-
-    // If it isn't undefined or its greater than 0
-    if (!isNaN(currentVal) && currentVal > 0) {
-      // Decrement one
-      $('input[name=' + fieldName + ']').val(currentVal - 1);
-    } else {
-      // Otherwise put a 0 there
-      $('input[name=' + fieldName + ']').val(0);
-    }
-  });
-});
-
-// MODEL
 
 // VIEW
 
@@ -116,6 +27,8 @@ document.querySelector('.app').appendChild(app.view);
 
 app.renderer.backgroundColor = 0xffffff;
 app.renderer.view.style.margin = '20px';
+
+// MODEL
 
 class Shape extends PIXI.Graphics {
   constructor(x, y) {
