@@ -8,14 +8,18 @@ body {
   margin: 0;
 }
 
+canvas {
+  border: 1px solid black;
+}
+
 .number-input {
   text-align: center;
   margin: -20px 30px;
   width: 150px;
 }
 
-.qty,
-.qtyS {
+.gravity-control,
+.shapes-control {
   width: 40px;
   text-align: center;
 }
@@ -45,6 +49,6 @@ body {
 
 .titles {
   @extend .buttons;
-  width: 11000px;
+  width: 1100px;
   // justify-content: space-between;
 }
